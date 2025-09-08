@@ -230,6 +230,8 @@ final class P11HKDF extends KDFSpi {
             }
             return retType.cast(ret);
         } catch (PKCS11Exception e) {
+
+            System.out.println("original error message : " + e);
             if (e.match(CKR_KEY_SIZE_RANGE)) {
                 throw new InvalidAlgorithmParameterException("Invalid key " +
                         "size (" + outLen + " bytes) for algorithm '" + alg +
