@@ -212,6 +212,7 @@ final class P11HKDF extends KDFSpi {
             Object ret;
             if (isData) {
                 try {
+                    System.out.println("if route taken");
                     CK_ATTRIBUTE[] dataAttr = new CK_ATTRIBUTE[] {
                             new CK_ATTRIBUTE(CKA_VALUE)
                     };
@@ -222,8 +223,10 @@ final class P11HKDF extends KDFSpi {
                     token.p11.C_DestroyObject(session.id(), derivedObjectID);
                 }
             } else {
+                System.out.println("else route taken");
                 ret = P11Key.secretKey(session, derivedObjectID, alg,
                         outLen * 8, null);
+                System.out.println("algorithm: " + ret.getAlgorithm());
             }
             return retType.cast(ret);
         } catch (PKCS11Exception e) {
