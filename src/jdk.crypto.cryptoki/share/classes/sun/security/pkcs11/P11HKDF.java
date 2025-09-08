@@ -164,6 +164,14 @@ final class P11HKDF extends KDFSpi {
                     "type (CKK_*) was not found for a key of the algorithm '" +
                     alg + "'.");
         }
+
+        P11SecretKeyFactory.KeyInfo kigeneric = P11SecretKeyFactory.getKeyInfo("Generic");
+
+        System.out.println("*****\nKey info for given alg:");
+        System.out.println(ki);
+        System.out.println("Key info for Generic:");
+        System.out.println(kigeneric);
+
         checkDerivedKeyType(ki, alg);
         P11KeyGenerator.checkKeySize(ki.keyGenMech, outLen * 8, token);
 
