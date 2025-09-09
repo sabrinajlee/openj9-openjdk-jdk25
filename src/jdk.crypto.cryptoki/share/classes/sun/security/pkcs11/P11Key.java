@@ -366,13 +366,17 @@ abstract class P11Key implements Key, Length {
         if ((SunPKCS11.mysunpkcs11 != null) && !SunPKCS11.isExportWrapKey.get()
             && ("AES".equals(algorithm) || "TripleDES".equals(algorithm))
         ) {
+            System.out.println("secret key function if route taken");
+
             if (attrs[0].getBoolean() || attrs[1].getBoolean() || (attrs[2].getBoolean() == false)) {
+                System.out.println("secret key function second if route taken");
                 try {
                     byte[] key = SunPKCS11.mysunpkcs11.exportKey(session.id(), attrs, keyID);
                     SecretKey secretKey = new SecretKeySpec(key, algorithm);
                     return new P11SecretKeyFIPS(session, keyID, algorithm, keyLength, attrs, secretKey);
                 } catch (PKCS11Exception e) {
                     // Attempt failed, create a P11SecretKey object.
+                    System.out.println("exception happened in secret key func, " + e);
                     if (debug != null) {
                         debug.println("Attempt failed, creating a SecretKey object for " + algorithm);
                     }
