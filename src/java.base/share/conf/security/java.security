@@ -93,6 +93,7 @@
 #
 # List of providers and their preference orders (see above):
 #
+security.provider.tbd=SunPKCS11
 security.provider.tbd=SUN
 security.provider.tbd=SunRsaSign
 security.provider.tbd=SunEC
@@ -110,7 +111,6 @@ security.provider.tbd=SunMSCAPI
 #ifdef macosx
 security.provider.tbd=Apple
 #endif
-security.provider.tbd=SunPKCS11
 
 #if defined aix-ppc || defined linux-ppc || defined linux-s390 || defined linux-x86 || defined windows
 #
