@@ -226,7 +226,7 @@ final class P11HKDF extends KDFSpi {
                 System.out.println("else route taken");
                 ret = P11Key.secretKey(session, derivedObjectID, alg,
                         outLen * 8, null);
-                System.out.println("algorithm: " + ret.getAlgorithm());
+                System.out.println("algorithm: " + retType.cast(ret).getAlgorithm());
             }
             return retType.cast(ret);
         } catch (PKCS11Exception e) {
