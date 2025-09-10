@@ -539,7 +539,7 @@ public final class KDF {
                     + "empty");
         }
         System.err.println("--IN KDF the alg given is: " + alg);
-        alg = "prk";
+        alg = "OKM";
 
         Objects.requireNonNull(derivationSpec);
         if (checkSpiNonNull(theOne)) {
