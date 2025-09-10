@@ -93,7 +93,7 @@
 #
 # List of providers and their preference orders (see above):
 #
-security.provider.1=SunPKCS11
+security.provider.1=SunPKCS11-NSS-FIPS
 security.provider.tbd=SUN
 security.provider.tbd=SunRsaSign
 security.provider.tbd=SunEC
