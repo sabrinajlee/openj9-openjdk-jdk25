@@ -212,6 +212,7 @@ final class P11HKDF extends KDFSpi {
             System.err.println("about to derive key. ?");
             long derivedObjectID = token.p11.C_DeriveKey(session.id(),
                     new CK_MECHANISM(mechanism, params), baseKeyID, attrs);
+            System.err.println("    done, moving on");
             Object ret;
             if (isData) {
                 try {
