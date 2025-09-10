@@ -231,7 +231,7 @@ final class P11HKDF extends KDFSpi {
                 ret = P11Key.secretKey(session, derivedObjectID, alg,
                         outLen * 8, null);
 
-                SecretKey sk = (SecretKey) ret
+                SecretKey sk = (SecretKey) ret;
                 System.err.println("the algorithm of the returned secret key obj: " + sk.getAlgorithm());
             }
             return retType.cast(ret);
