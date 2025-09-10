@@ -538,6 +538,9 @@ public final class KDF {
                     "the algorithm for the SecretKey return value must not be "
                     + "empty");
         }
+        System.err.println("--IN KDF the alg given is: " + alg);
+        alg = "prk";
+
         Objects.requireNonNull(derivationSpec);
         if (checkSpiNonNull(theOne)) {
             try {
@@ -547,6 +550,7 @@ public final class KDF {
                 return null; // will not be called
             }
         } else {
+            System.err.println("IN KDF else route was taken in derive key");
             return (SecretKey) chooseProvider(alg, derivationSpec);
         }
     }
