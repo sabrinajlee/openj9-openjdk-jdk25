@@ -167,16 +167,18 @@ final class P11HKDF extends KDFSpi {
 
         P11SecretKeyFactory.KeyInfo kigeneric = P11SecretKeyFactory.getKeyInfo("Generic");
 
-        System.out.println("*****\nKey info for given alg:");
-        System.out.println(ki);
-        System.out.println("Key info for Generic:");
-        System.out.println(kigeneric);
+        System.err.println("*****\nKey info for alg " + alg + ":");
+        System.err.println(ki);
+        System.err.println("Key info for Generic:");
+        System.err.println(kigeneric);
 
         checkDerivedKeyType(ki, alg);
         P11KeyGenerator.checkKeySize(ki.keyGenMech, outLen * 8, token);
 
+        System.err.println("converting key");
         P11Key p11BaseKey = convertKey(baseKey, (isExtract ? "IKM" : "PRK") +
                 " could not be converted to a token key for HKDF derivation.");
+        System.err.println("    done");
 
         long saltType = CKF_HKDF_SALT_NULL;
         byte[] saltBytes = null;
@@ -207,12 +209,13 @@ final class P11HKDF extends KDFSpi {
                     p11SaltKey.getKeyID() : 0L, info);
             attrs = token.getAttributes(O_GENERATE, derivedKeyClass,
                     ki.keyType, attrs);
+            System.err.println("about to derive key. ?");
             long derivedObjectID = token.p11.C_DeriveKey(session.id(),
                     new CK_MECHANISM(mechanism, params), baseKeyID, attrs);
             Object ret;
             if (isData) {
                 try {
-                    System.out.println("if route taken");
+                    System.err.println("if route taken");
                     CK_ATTRIBUTE[] dataAttr = new CK_ATTRIBUTE[] {
                             new CK_ATTRIBUTE(CKA_VALUE)
                     };
@@ -223,18 +226,18 @@ final class P11HKDF extends KDFSpi {
                     token.p11.C_DestroyObject(session.id(), derivedObjectID);
                 }
             } else {
-                System.out.println("else route taken");
+                System.err.println("else route taken");
 
                 ret = P11Key.secretKey(session, derivedObjectID, alg,
                         outLen * 8, null);
 
-                //SecretKey sk = (SecretKey) ret
-                //System.out.println("algorithm: " + sk.getAlgorithm());
+                SecretKey sk = (SecretKey) ret
+                System.err.println("the algorithm of the returned secret key obj: " + sk.getAlgorithm());
             }
             return retType.cast(ret);
         } catch (PKCS11Exception e) {
 
-            System.out.println("original error message : " + e);
+            System.err.println("original error message : " + e);
             if (e.match(CKR_KEY_SIZE_RANGE)) {
                 throw new InvalidAlgorithmParameterException("Invalid key " +
                         "size (" + outLen + " bytes) for algorithm '" + alg +
