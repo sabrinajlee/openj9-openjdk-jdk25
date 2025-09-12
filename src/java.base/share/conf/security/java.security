@@ -93,7 +93,7 @@
 #
 # List of providers and their preference orders (see above):
 #
-security.provider.tbd=SunPKCS11 ${java.home}/conf/security/nss.fips.cfg
+security.provider.tbd=sun.security.pkcs11.SunPKCS11 ${java.home}/conf/security/nss.fips.cfg
 security.provider.tbd=SUN
 security.provider.tbd=SunRsaSign
 security.provider.tbd=SunEC
