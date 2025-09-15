@@ -345,7 +345,9 @@ public final class Secmod {
      *   or not initialized
      */
     public Module getModule(ModuleType type) {
+        System.err.println(">>>>>>>>>HERE module list in secmod");
         for (Module module : getModules()) {
+            System.err.println("    module is " + module + " and type is " + module.getType());
             if (module.getType() == type) {
                 return module;
             }
