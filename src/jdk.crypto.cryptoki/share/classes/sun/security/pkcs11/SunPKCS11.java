@@ -181,6 +181,7 @@ public final class SunPKCS11 extends AuthProvider {
         if (debug != null) {
             debug.println("SunPKCS11 loading " + config.getFileName());
         }
+        System.err.println(">>>>>>>>HERE config file name is: " + config.getFileName());
 
         String library = config.getLibrary();
         String tokenLabel = config.getTokenLabel();
@@ -264,6 +265,7 @@ public final class SunPKCS11 extends AuthProvider {
             }
 
             String moduleName = config.getNssModule();
+            System.err.println(">>>>>>HERE moduleName = " + moduleName);
             if (moduleName == null) {
                 nssModule = secmod.getModule(ModuleType.FIPS);
                 if (nssModule != null) {
