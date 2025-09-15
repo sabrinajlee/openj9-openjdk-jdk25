@@ -275,6 +275,7 @@ public final class SunPKCS11 extends AuthProvider {
             }
             if (moduleName.equals("fips")) {
                 nssModule = secmod.getModule(ModuleType.FIPS);
+                System.err.println(">>>>>>>>>>>>>HERE nssModule = " + nssModule);
                 nssUseSecmodTrust = true;
                 functionList = "FC_GetFunctionList";
             } else if (moduleName.equals("keystore")) {
