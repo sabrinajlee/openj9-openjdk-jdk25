@@ -121,17 +121,17 @@ RestrictedSecurity.tempprofile.desc.sunsetDate = 2026-09-21
 RestrictedSecurity.tempprofile.fips.mode = 140-2
 
 RestrictedSecurity.tempprofile.jce.provider.1 = sun.security.pkcs11.SunPKCS11 ${java.home}/conf/security/nss.fips.cfg
-RestrictedSecurity.tempprofile.jce.provider.2 = SUN
-RestrictedSecurity.tempprofile.jce.provider.3 = SunRsaSign
-RestrictedSecurity.tempprofile.jce.provider.4 = SunEC
-RestrictedSecurity.tempprofile.jce.provider.5 = SunJSSE
-RestrictedSecurity.tempprofile.jce.provider.6 = SunJCE
-RestrictedSecurity.tempprofile.jce.provider.7 = SunJGSS
-RestrictedSecurity.tempprofile.jce.provider.8 = SunSASL
-RestrictedSecurity.tempprofile.jce.provider.9 = XMLDSig
-RestrictedSecurity.tempprofile.jce.provider.10 = SunPCSC
-RestrictedSecurity.tempprofile.jce.provider.11 = JdkLDAP
-RestrictedSecurity.tempprofile.jce.provider.12 = JdkSASL
+RestrictedSecurity.tempprofile.jce.provider.2 = sun.security.provider.Sun
+RestrictedSecurity.tempprofile.jce.provider.3 = sun.security.rsa.SunRsaSign
+RestrictedSecurity.tempprofile.jce.provider.4 = sun.security.ec.SunEC
+RestrictedSecurity.tempprofile.jce.provider.5 = sun.security.ssl.SunJSSE
+RestrictedSecurity.tempprofile.jce.provider.6 = com.sun.crypto.provider.SunJCE
+RestrictedSecurity.tempprofile.jce.provider.7 = sun.security.jgss.SunProvider
+RestrictedSecurity.tempprofile.jce.provider.8 = com.sun.security.sasl.Provider
+RestrictedSecurity.tempprofile.jce.provider.9 = org.jcp.xml.dsig.internal.dom.XMLDSigRI
+RestrictedSecurity.tempprofile.jce.provider.10 = sun.security.smartcardio.SunPCSC
+RestrictedSecurity.tempprofile.jce.provider.11 = sun.security.provider.certpath.ldap.JdkLDAP
+RestrictedSecurity.tempprofile.jce.provider.12 = com.sun.security.sasl.gsskerb.JdkSASL
 
 #if defined aix-ppc || defined linux-ppc || defined linux-s390 || defined linux-x86 || defined windows
 #
