@@ -133,6 +133,9 @@ RestrictedSecurity.tempprofile.jce.provider.10 = sun.security.smartcardio.SunPCS
 RestrictedSecurity.tempprofile.jce.provider.11 = sun.security.provider.certpath.ldap.JdkLDAP
 RestrictedSecurity.tempprofile.jce.provider.12 = com.sun.security.sasl.gsskerb.JdkSASL
 
+RestrictedSecurity.NSS.140-2.securerandom.provider = SunPKCS11-NSS-FIPS
+RestrictedSecurity.tempprofile.securerandom.algorithm = PKCS11
+
 #if defined aix-ppc || defined linux-ppc || defined linux-s390 || defined linux-x86 || defined windows
 #
 # Java Restricted Security Mode
