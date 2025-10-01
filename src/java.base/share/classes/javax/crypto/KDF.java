@@ -234,6 +234,7 @@ public final class KDF {
     public static KDF getInstance(String algorithm)
             throws NoSuchAlgorithmException {
         Objects.requireNonNull(algorithm, "algorithm must not be null");
+        System.err.println(algorithm);
         try {
             return getInstance(algorithm, (KDFParameters) null);
         } catch (InvalidAlgorithmParameterException e) {
