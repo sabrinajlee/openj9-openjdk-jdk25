@@ -542,6 +542,7 @@ public final class KDF {
         Objects.requireNonNull(derivationSpec);
         if (checkSpiNonNull(theOne)) {
             try {
+                System.err.prinln("kdf:545 " + theOne.spi().engineDeriveKey(alg, derivationSpec));
                 return theOne.spi().engineDeriveKey(alg, derivationSpec);
             } catch (InvalidAlgorithmParameterException e) {
                 rethrow(e);
