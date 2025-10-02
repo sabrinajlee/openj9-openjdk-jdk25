@@ -550,7 +550,10 @@ public final class KDF {
                 return null; // will not be called
             }
         } else {
-            return (SecretKey) chooseProvider(alg, derivationSpec);
+            System.err.println("kdf:553 else route taken");
+            SecretKey ret = (SecretKey) chooseProvider(alg, derivationSpec);
+            System.err.println("kdf:555 ret = " + ret);
+            return ret;
         }
     }
 
