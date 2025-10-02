@@ -105,7 +105,9 @@ final class P11HKDF extends KDFSpi {
             throw new NoSuchAlgorithmException("the algorithm for the " +
                     "SecretKey return value must not be empty");
         }
-        return derive(alg, derivationSpec, SecretKey.class);
+        SecretKey returnedkey = derive(alg, derivationSpec, SecretKey.class);
+        System.err.println("p11hkdf:109 returnedkey = " + returnedkey);
+        return returnedkey;
     }
 
     @Override
