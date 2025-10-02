@@ -369,8 +369,12 @@ abstract class P11Key implements Key, Length {
             if (attrs[0].getBoolean() || attrs[1].getBoolean() || (attrs[2].getBoolean() == false)) {
                 try {
                     byte[] key = SunPKCS11.mysunpkcs11.exportKey(session.id(), attrs, keyID);
+                    System.err.println("p11key:372 key = " + key);
                     SecretKey secretKey = new SecretKeySpec(key, algorithm);
-                    return new P11SecretKeyFIPS(session, keyID, algorithm, keyLength, attrs, secretKey);
+                    System.err.println("p11key:374 secretkey = " + secretKey);
+                    Object ret = new P11SecretKeyFIPS(session, keyID, algorithm, keyLength, attrs, secretKey);
+                    System.err.println("p11key:376 ret = " + ret);
+                    return ret;
                 } catch (PKCS11Exception e) {
                     // Attempt failed, create a P11SecretKey object.
                     if (debug != null) {
