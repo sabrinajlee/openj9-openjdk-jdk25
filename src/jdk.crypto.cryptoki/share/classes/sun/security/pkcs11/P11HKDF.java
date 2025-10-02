@@ -164,12 +164,19 @@ final class P11HKDF extends KDFSpi {
                     "type (CKK_*) was not found for a key of the algorithm '" +
                     alg + "'.");
         }
+        System.err.println("p11hkdf:167 ki = " + ki);
+        System.err.println("    base key = " + baseKey);
+        System.err.println("    isextract = " + isExtract);
+        System.err.println("    isexpant = " + isExpand);
+        System.err.println("    salt = " + salt);
+        
         checkDerivedKeyType(ki, alg);
         P11KeyGenerator.checkKeySize(ki.keyGenMech, outLen * 8, token);
 
         P11Key p11BaseKey = convertKey(baseKey, (isExtract ? "IKM" : "PRK") +
                 " could not be converted to a token key for HKDF derivation.");
 
+        System.err.println("p11basekey = " + p11BaseKey);
         long saltType = CKF_HKDF_SALT_NULL;
         byte[] saltBytes = null;
         P11Key p11SaltKey = null;
@@ -210,12 +217,14 @@ final class P11HKDF extends KDFSpi {
                     token.p11.C_GetAttributeValue(session.id(), derivedObjectID,
                             dataAttr);
                     ret = dataAttr[0].getByteArray();
+                    System.err.println("p11hkdf:220 ret = " + ret);
                 } finally {
                     token.p11.C_DestroyObject(session.id(), derivedObjectID);
                 }
             } else {
                 ret = P11Key.secretKey(session, derivedObjectID, alg,
                         outLen * 8, null);
+                System.err.println("p11hkdf:227 ret = " + ret);
             }
             return retType.cast(ret);
         } catch (PKCS11Exception e) {
