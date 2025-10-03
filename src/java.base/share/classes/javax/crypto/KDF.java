@@ -544,9 +544,10 @@ public final class KDF {
             try {
                 SecretKey prk = theOne.spi().engineDeriveKey(alg, derivationSpec);
                 System.err.println("kdf:545 " + alg + " " + prk);
-                System.err.println("kdf:545 " + alg + " " + prk.getEncoded());
+                System.err.println("kdf:546 " + alg + " " + prk.getEncoded());
                 return prk;
             } catch (InvalidAlgorithmParameterException e) {
+                System.err.println("kdf:550 ERROR HERE");
                 rethrow(e);
                 return null; // will not be called
             }
