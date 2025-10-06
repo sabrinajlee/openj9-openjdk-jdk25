@@ -170,7 +170,7 @@ abstract class P11Key implements Key, Length {
 
     // see JCA spec
     public final byte[] getEncoded() {
-        System.out.println("GETENCODED USED p11key:173");
+        System.err.println("GETENCODED USED p11key:173");
         byte[] b = getEncodedInternal();
         return (b == null) ? null : b.clone();
     }
@@ -516,6 +516,7 @@ abstract class P11Key implements Key, Length {
             return null;
         }
         byte[] getEncodedInternal() {
+            System.err.println("p11key:520 getencodedinternal");
             token.ensureValid();
             return null;
         }
@@ -539,6 +540,7 @@ abstract class P11Key implements Key, Length {
 
         @Override
         byte[] getEncodedInternal() {
+            System.err.println("p11key:543 getencodedinternal");
             return key.getEncoded();
         }
 
@@ -574,6 +576,7 @@ abstract class P11Key implements Key, Length {
         }
 
         byte[] getEncodedInternal() {
+            System.err.println("p11key:579 getencodedinternal");
             token.ensureValid();
             if (getFormat() == null) {
                 return null;
