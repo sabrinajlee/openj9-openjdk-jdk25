@@ -570,6 +570,7 @@ abstract class P11Key implements Key, Length {
 
         public String getFormat() {
             token.ensureValid();
+            System.err.println("    p11:573 key = " + key + ", sens: " + sensitive + ", extr:" + extractable);
             if ((key == null) && (sensitive || !extractable || (isNSS && tokenObject))) {
                 System.err.println("****    P11key:574 getformat is null");
                 System.err.println("        - isNss&&tokenobject=" + (isNSS && tokenObject));
