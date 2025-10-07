@@ -558,17 +558,21 @@ abstract class P11Key implements Key, Length {
                 int keyLength, CK_ATTRIBUTE[] attrs) {
             super(SECRET, session, keyID, algorithm, keyLength, attrs);
             this.key = null;
+            System.err.println("**P11key:561 CONSTRUCTOR WITH NO KEY GIVEN; NULL KEY");
         }
 
         P11SecretKey(Session session, long keyID, String algorithm,
                 int keyLength, CK_ATTRIBUTE[] attrs, SecretKey key) {
             super(SECRET, session, keyID, algorithm, keyLength, attrs);
             this.key = key;
+            System.err.println("**P11key:568 CONSTRUCTOR KEY GIVEN");
         }
 
         public String getFormat() {
             token.ensureValid();
             if ((key == null) && (sensitive || !extractable || (isNSS && tokenObject))) {
+                System.err.println("****    P11key:574 getformat is null");
+                System.err.println("        - isNss&&tokenobject=" + (isNSS && tokenObject));
                 return null;
             } else {
                 return "RAW";
