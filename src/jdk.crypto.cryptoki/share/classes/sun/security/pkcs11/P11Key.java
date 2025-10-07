@@ -579,13 +579,16 @@ abstract class P11Key implements Key, Length {
             System.err.println("p11key:579 getencodedinternal");
             token.ensureValid();
             if (getFormat() == null) {
+                System.err.println("    p11key:582 getformat null route taken");
                 return null;
             }
 
             if (key != null) {
+                System.err.println("    p11key:587 key not null route taken");
                 return key.getEncoded();
             }
 
+            System.err.println("    p11key:591 not returned yet");
             byte[] b = encoded;
             if (b == null) {
                 synchronized (this) {
@@ -598,6 +601,7 @@ abstract class P11Key implements Key, Length {
                     }
                 }
             }
+            System.err.println("    p11key:604 b = " + b);
             return b;
         }
     }
