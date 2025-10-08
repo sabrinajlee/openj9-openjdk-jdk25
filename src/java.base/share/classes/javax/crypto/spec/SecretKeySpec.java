@@ -197,6 +197,7 @@ public class SecretKeySpec implements KeySpec, SecretKey {
      * each time this method is called.
      */
     public byte[] getEncoded() {
+        System.err.println("secretkeyspec getencoded used");
         return this.key.clone();
     }
 
