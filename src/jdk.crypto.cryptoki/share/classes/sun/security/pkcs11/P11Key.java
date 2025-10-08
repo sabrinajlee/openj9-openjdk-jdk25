@@ -534,6 +534,7 @@ abstract class P11Key implements Key, Length {
                 int keyLength, CK_ATTRIBUTE[] attributes, SecretKey key) {
             super(SECRET, session, keyID, algorithm, keyLength, attributes);
             this.key = key;
+            System.err.println("P11SecretKeyFIPS constructor");
         }
 
         @Override
