@@ -606,5 +606,7 @@ public class Object {
      * @jls 12.6 Finalization of Class Instances
      */
     @Deprecated(since="9", forRemoval=true)
-    protected void finalize() throws Throwable { }
+    protected void finalize() throws Throwable {
+        System.out.println("OBJECT FINALIZE CALLED");
+    }
 }
