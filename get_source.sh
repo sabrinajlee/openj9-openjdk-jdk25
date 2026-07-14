@@ -71,7 +71,7 @@ add_source() {
 #
 configure_defaults() {
 	local current_branch="$(git rev-parse --abbrev-ref HEAD)"
-	local openj9_branch=compareunsigned-power
+	local openj9_branch=compareunsignedpower-spillfix
 	local omr_branch=openj9
 
 	# If this repository is on a release branch, use the same branch names
